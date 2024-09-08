@@ -21,6 +21,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip=true
+    - name: Create target/dependency directory and extract JAR files
+      run: |
+        mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
