@@ -27,8 +27,8 @@ public class ParkingLotController {
     private HistoryRepository historyRepository;
 
     private int totalPlaces = 10;
-    private final int payPerHour = 3000;
-    private final int payFirstHour = 5000;
+    private int payPerHour = 3000;
+    private int payFirstHour = 5000;
 
     // Get available places
     @GetMapping("/places")
@@ -82,16 +82,31 @@ public class ParkingLotController {
         return carRepository.findAll();
     }
 
-    // Update total places
-    @PatchMapping("/places")
-    public ResponseEntity<String> updateTotalPlaces(@RequestBody Map<String, Integer> request) {
-        Integer newTotalPlaces = request.get("totalPlaces");
-        if (newTotalPlaces != null && newTotalPlaces >= 0) {
-            this.totalPlaces = newTotalPlaces;
-            return ResponseEntity.ok("Total places updated successfully");
-        } else {
-            return ResponseEntity.badRequest().body("Invalid total places value");
+    // Update total places, pay per hour, and pay for first hour
+    @PatchMapping("/settings")
+    public ResponseEntity<String> updateSettings(@RequestBody Map<String, Integer> request) {
+        if (request.containsKey("totalPlaces")) {
+            Integer newTotalPlaces = request.get("totalPlaces");
+            if (newTotalPlaces != null && newTotalPlaces >= 0) {
+                this.totalPlaces = newTotalPlaces;
+            }
         }
+
+        if (request.containsKey("payPerHour")) {
+            Integer newPayPerHour = request.get("payPerHour");
+            if (newPayPerHour != null && newPayPerHour >= 0) {
+                this.payPerHour = newPayPerHour;
+            }
+        }
+
+        if (request.containsKey("payFirstHour")) {
+            Integer newPayFirstHour = request.get("payFirstHour");
+            if (newPayFirstHour != null && newPayFirstHour >= 0) {
+                this.payFirstHour = newPayFirstHour;
+            }
+        }
+
+        return ResponseEntity.ok("Settings updated successfully");
     }
 
     // Get history
