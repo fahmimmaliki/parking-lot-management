@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Lot Management</title>
+</head>
+<body>
+    <h1>Parking Lot Management System</h1>
+    <h2>Available Places: <span id="available-places"></span></h2>
+
+    <h3>Park a Car</h3>
+    <input type="text" id="licensee" placeholder="License Plate">
+    <button onclick="parkCar()">Park</button>
+
+    <h3>Leave Parking</h3>
+    <input type="number" id="carId" placeholder="Car ID">
+    <button onclick="leaveCar()">Leave</button>
+
+    <script src="parkinglot.js"></script>
+</body>
+</html>
