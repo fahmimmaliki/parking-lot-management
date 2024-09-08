@@ -26,7 +26,7 @@ public class ParkingLotController {
     @Autowired
     private HistoryRepository historyRepository;
 
-    private final int totalPlaces = 10;
+    private int totalPlaces = 10;
     private final int payPerHour = 3000;
     private final int payFirstHour = 5000;
 
@@ -80,6 +80,18 @@ public class ParkingLotController {
     @GetMapping("/cars")
     public List<Car> getCars() {
         return carRepository.findAll();
+    }
+
+    // Update total places
+    @PatchMapping("/places")
+    public ResponseEntity<String> updateTotalPlaces(@RequestBody Map<String, Integer> request) {
+        Integer newTotalPlaces = request.get("totalPlaces");
+        if (newTotalPlaces != null && newTotalPlaces >= 0) {
+            this.totalPlaces = newTotalPlaces;
+            return ResponseEntity.ok("Total places updated successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid total places value");
+        }
     }
 
     // Get history

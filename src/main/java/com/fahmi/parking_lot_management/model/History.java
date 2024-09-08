@@ -24,5 +24,43 @@ public class History {
     }
 
     // Getters and Setters
-    // ...
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLicensee() {
+        return licensee;
+    }
+
+    public void setLicensee(String licensee) {
+        this.licensee = licensee;
+    }
+
+    public LocalDateTime getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(LocalDateTime arrival) {
+        this.arrival = arrival;
+    }
+
+    public LocalDateTime getLeave() {
+        return leave;
+    }
+
+    public void setLeave(LocalDateTime leave) {
+        this.leave = leave;
+    }
+
+    public int getBill() {
+        return bill;
+    }
+
+    public void setBill(int bill) {
+        this.bill = bill;
+    }
 }
