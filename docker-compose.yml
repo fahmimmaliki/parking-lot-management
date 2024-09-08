@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
   app:
+    container_name: parkinglot
+    image: fahmimahmud/parking-lot-management
     build: .
     ports:
       - "8080:8080"

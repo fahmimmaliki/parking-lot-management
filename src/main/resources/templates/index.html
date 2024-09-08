@@ -1,22 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Lot Management</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Lot Management</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="parkinglot.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <h1>Parking Lot Management System</h1>
-    <h2>Available Places: <span id="available-places"></span></h2>
+  <div class="container">
+    <div class="card my-3">
+      <div class="card-header px-3 d-flex">
+        <h5 class="m-0">Parking Management</h5>
+        <div class="ml-auto">
+          <span id="placesCount" class="badge badge-success"></span> available places
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="input-group p-2" id="addForm">
+          <input type="text" class="form-control" id="carValue" placeholder="Registration number">
+          <div class="input-group-append">
+            <button id="carButton" class="btn btn-sm btn-success">Park Car</button>
+          </div>
+          <p id="message" class="text-danger m-0 d-none">Registration number invalid</p>
+        </div>
+        <div class="table-responsive">
+          <table id="parking" class="table table-striped m-0">
+            <thead>
+              <tr>
+                <th>Registration No</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Status</th>
+                <th class="text-right">Bill</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <h3>Park a Car</h3>
-    <input type="text" id="licensee" placeholder="License Plate">
-    <button onclick="parkCar()">Park</button>
+  <!-- Modal for Parking Summary -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Parking Summary</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </div>
+  </div>
 
-    <h3>Leave Parking</h3>
-    <input type="number" id="carId" placeholder="Car ID">
-    <button onclick="leaveCar()">Leave</button>
-
-    <script src="parkinglot.js"></script>
+  <!-- JavaScript logic -->
+  <script src="parkinglot.js"></script>
 </body>
+
 </html>
